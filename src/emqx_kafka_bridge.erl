@@ -68,6 +68,8 @@ on_client_disconnected(#{client_id := ClientId, username := Username}, _Reason, 
 
 %% transform message and return
 on_message_publish(Message = #message{topic = <<"$SYS/", _/binary>>}, _Env) ->
+    Topic1 = Message#message.topic,
+    io.format("~s", Topic1),
     {ok, Message};
 
 on_message_publish(Message, _Env) ->
